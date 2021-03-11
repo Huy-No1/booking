@@ -1,0 +1,21 @@
+.{
+  padding: 0px;
+  margin: 0px;
+}
+
+.mainContainer {
+  background: url("background.jpg") repeat fixed 60%;
+  opacity: 85%;
+  width: 1519px;
+  height:auto;
+  text-align: center;
+  padding-bottom: 50px;
+
+}
+
+.menu {
+  z-index: 10;
+}
+a {
+  text-decoration: none;
+}

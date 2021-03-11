@@ -1,0 +1,67 @@
+.login-mainContainer {
+    width: 500px;
+    height: 275px;
+    background-color: #ffffff7a;;
+    margin-top: 150px ;
+    border-radius: 20px;
+    display: inline-block;
+    transition: 0.6s;
+}
+.login-mainContainer.l {
+    height: 350px;
+    transition: 0.6s;
+}
+.login-login1 {
+    margin-left: 0px;
+    margin-right: 10px;
+    color: black;
+    text-transform: uppercase;
+    font-size: 20px;
+    display: inline-block;
+    text-align: left;
+    cursor: pointer;
+}
+.login-h5.l {
+    display: inline-block;
+    margin-top: 30px;
+    border-bottom: 5px solid #49A2CC;
+    transition: 0.4s;
+}
+.login-h5.s {
+    display: inline-block;
+    margin-top: 30px;
+    transition: 0.4s;
+}
+.login-loginForm {
+    display: block;
+    width: 500px;
+    text-align: center;
+    transition: 0.6s;
+}
+.login-boxInput {
+    text-align: center;
+    background-color: #ffffff7a;;
+    font-size: 20px;
+    margin: 10px 0px;
+    padding: 10px;
+    width: 350px;
+    height: 35px;
+    border-radius: 20px;
+    border: none;
+    transition: 0.6s;
+}
+.login-submit {
+    width: 170px;
+    height: 35px;
+    background-color: #49A2CC;
+    border-radius: 20px;
+    border: none;
+    font-size: 20px;
+    transition: 1s;
+}
+
+.login-exit {
+    font-size: 30px;
+    color: white;
+    margin-top: 20px;
+}

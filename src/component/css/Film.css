@@ -1,0 +1,75 @@
+.mainContainer3 {
+    width: 1100px;
+    height: 350px;
+    margin-top: 80px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: #00000040;
+    position: relative;
+}
+
+.flex{
+    width: 1100px;
+    height: 350px;
+    display: flex;  
+    overflow: hidden;
+}
+.poster {
+    width: 200px;
+    height: 285px;
+}
+
+
+.name {
+    margin-top: 5px;
+    /* padding: 0px; */
+    text-transform: uppercase;
+    text-decoration: none;
+    border: none;
+    color: aliceblue;
+}
+
+.divname {
+    margin-right: 20px;
+    margin-top: 5px;
+    text-align: center;
+    font-family: Arial;
+    font-size: 20px;
+    transition: 0.6s;
+}
+.divname.first {
+    margin-left: 0%;
+}
+.divname.second {
+    margin-left: -30%;
+}
+.divname.third {
+    margin-left: -60%;
+}
+.divname:hover, .name:hover {
+    margin-top: 0px;
+    color: #C3CC26;
+    transition: 0.6s;
+}
+.test {
+    background-color: #7e7e7e30;
+    width: 30px;
+    height: 350px;
+    font-size: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0px;
+    left: 1110px;
+    transition: 0.6s;
+}
+.left {
+    position: absolute;
+    left: -40px;
+    top: 0px;
+}
+.test:hover {
+    background-color: #f5deb3b3;
+    transition: 0.6s;
+}

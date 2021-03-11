@@ -1,0 +1,74 @@
+.mainContainer1 {
+    margin-top: 100px;
+    display: inline-block;
+    width: 1100px;
+    height: 457px;
+    background-color: transparent;
+    text-align: center;
+    position: relative;
+    transition: 0.6s;
+
+}
+
+.img {    
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    width: 956px;
+    height: 447px;
+    overflow: hidden;
+}
+
+.imgPoster {
+    margin-top: 10px;
+    max-width: 100%;
+    max-height: 100%;
+}
+
+
+.labelRadio {
+    display: inline-block;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 2px solid black;
+    transition: 0.5s;
+}
+
+.labelRadio:not(:last-child) {
+    margin-right: 10px;
+}
+
+.labelRadio:hover {
+    opacity: 60%;
+    background-color: black;
+    transition: 0.5s;
+}
+
+.labelInput {
+    width: 1100px;
+    height: auto;
+    display: block;
+    position: absolute;
+    bottom: 20px;
+}
+
+.first {
+    margin-left: 0%;
+    transition: 1s;
+} 
+.second{
+    margin-left: -100%;
+    transition: 1s;
+}
+.third{
+    margin-left: -200%;
+    transition: 1s;
+}
+
+.footer {
+    width: 1100px;
+    padding-top: 20px;
+    border-bottom: 3px solid #42AF33;
+    clear: both;
+}
