@@ -26,10 +26,7 @@ const FilmList = (props) => {
 
     //gọi Api để set cái phim list chạy phía dưới
     useEffect(() =>{
-        axios.get('http://localhost:3001/api/getmovieinfo').then(res =>{
-                setList(res.data);
-                props.onShow(res.data);
-            }).catch(err =>console.log(err));
+        setList(props.list);
     },[]);
 
     return(

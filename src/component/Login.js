@@ -15,18 +15,7 @@ const Login =(props) => {
     const [rePassword, setRePassword]= useState("");
 
     const loginSubmit = (username, password) =>{
-        axios.post('http://localhost:3001/api/login',{ username }).then(res =>{
-    
-                    if(password == res.data.user_password){
-                        props.login({username, password});
-                        console.log(props.user);
-                        location.href="/";
-                    }
-                        
-                    else alert("Not Success");
-    
-                }).catch(err =>console.log(err));
-    
+        
     }
     return (
         <div className={login?"login-mainContainer":"login-mainContainer l" }>
