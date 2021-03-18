@@ -1,0 +1,52 @@
+.information_container {
+    width: 80%;
+    height: 500px;
+    background-color: #7e7e7e30;
+    margin-top: 100px;
+    display: inline-block;
+}
+.information_user {
+    display: inline-block;
+    width: 40%;
+    height: auto;
+    padding:20px;
+    margin: 20px;
+    color: black;
+    background-color: #7e7e7e30;
+    float: left;
+    border-radius: 20px;
+    font-size: 20px;
+    font-family: Arial;
+    font-weight: 20px;
+    text-align: start;
+}
+.information-div {
+    border-bottom: 1px solid #ffffff7a;
+    margin-bottom: 10px;
+
+}
+button {
+    background-color: #3e7d9b;
+    transition: 0.6s;
+    border: none;
+    margin: 20px 130px;
+    border: none;
+    width: 120px;
+    height: 30px;
+    color: black;
+}
+button:hover {
+    background-color: rgb(235, 235, 131);;
+    transition: 0.6s;
+}
+.information_history {
+    width: 45%;
+    height: 80%;
+    background-color: #7e7e7e30;
+    display: inline-block;
+    margin: 20px;
+    transition: 0.6s;
+    float: left;
+    overflow: hidden;
+    
+}

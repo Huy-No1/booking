@@ -8,6 +8,7 @@ import Menu from './component/Menu'
 import Login from './component/Login';
 import Seat from './component/Seat';
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import Infomation from './component/Infomation';
 class App extends Component{
   constructor(props){
     super(props);
@@ -25,14 +26,13 @@ class App extends Component{
       <div className="mainContainer">
         <Menu/> 
         <div>
-            <Route exact path="/" render={() =><MainContainer click={onClick}/>}/>
+            {/* <Route exact path="/" render={() =><MainContainer click={onClick}/>}/>
             <Route exact path="/login" component={Login}/>
-            <Route exact path="/seat" component={() => <Seat seat={this.state.seat}/> }/>
+            <Route exact path="/seat" component={() => <Seat seat={this.state.seat}/> }/> */}
+          <Infomation/>
         </div>
-
-          
       </div>        
-      
+     
     );
   }
   

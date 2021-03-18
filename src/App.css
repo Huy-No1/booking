@@ -6,8 +6,8 @@
 .mainContainer {
   background: url("background.jpg") repeat fixed 60%;
   opacity: 85%;
-  width: 1519px;
-  height:auto;
+  width: 100%;
+  height: 1200px;
   text-align: center;
   padding-bottom: 50px;
 
