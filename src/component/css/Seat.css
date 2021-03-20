@@ -47,9 +47,11 @@
 }
 
 .seat-seat-note {
-    display:inline-block;
+    display: inline-block;
     width: 200px;
     height: 25px;
+    border-radius: 10px;
+    font-family: Arial;
 
 }
 
