@@ -19,3 +19,20 @@
 a {
   text-decoration: none;
 }
+
+.exit{
+  position: absolute;
+  top: 140px;
+  right: 250px;
+  color: white;
+  cursor: pointer;
+}
+.bigPoster {
+  background-color: #000000a3;
+  width: 100%;
+  height: 100%;
+  z-index: 11;
+  position: fixed;
+  padding-top: 130px;
+      
+}

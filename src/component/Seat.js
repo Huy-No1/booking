@@ -113,9 +113,9 @@ const Seat = (props) => {
                 <div className="seat-infoTicket">
                     {/* <img src={"/img/" + list[seat - 1].movie_imgSource} alt=""/>  */}
                     <div>
-                    {/* <p style={{marginTop: '10px',fontSize: '30px', fontWeight: '700'}}>{list[seat - 1].movie_name}</p> */}
-                    {/* <p>{list[seat - 1].movie_duration +" phút"}</p> */}
-                    {/* <p>{"Ra mắt: " + list[seat - 1].movie_release.slice(0, 10)}</p> */}
+                    {/* <p style={{marginTop: '10px',fontSize: '30px', fontWeight: '700'}}>{list[seat - 1].movie_name}</p>
+                    <p>{list[seat - 1].movie_duration +" phút"}</p>
+                    <p>{"Ra mắt: " + list[seat - 1].movie_release.slice(0, 10)}</p> */}
                     </div>
                     <div style={{clear: 'both'}}></div>
                     <div className="seat-div">
