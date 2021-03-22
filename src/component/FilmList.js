@@ -5,7 +5,8 @@ import './css/Film.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faAngleLeft, faAngleRight } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
-import * as types from '../reducer/action'
+import * as types from '../reducer/action';
+import firebase from '../firebase';
 import axios from "axios";
 
 //Hiển thị list phim
@@ -26,7 +27,17 @@ const FilmList = (props) => {
 
     //gọi Api để set cái phim list chạy phía dưới
     useEffect(() =>{
-        setList(props.list);
+        console.log("running");
+        const filmRef = firebase.database().ref("FilmList");
+        // console.log(filmRef);
+        filmRef.on("value", snap => {
+            const obj= snap.val();
+            const arr=[];
+            for (let i in obj)
+                arr.push(obj[i]);
+            setList(arr);
+            props.onShow(arr);
+        });
     },[]);
 
     return(
@@ -34,12 +45,12 @@ const FilmList = (props) => {
             <div className="flex">
             {   
                 list.map((item) => (
-                    <div key={item.movie_id} className={item.movie_id===1?"divname "+ arrayInput[input]:"divname"}
-                        onClick={() =>props.click(item.movie_id)}>
+                    <div key={item.id} className={item.id===1?"divname "+ arrayInput[input]:"divname"}
+                        onClick={() =>props.click(item.id)}>
                     <Link to="/seat" className="name">
-                        <img  src={"img/"+ item.movie_imgSource} 
+                        <img  src={"img/"+ item.imgSrc} 
                             className="poster"/>
-                        <p style={{marginTop: '5px'}}>{item.movie_name}</p>
+                        <p style={{marginTop: '5px'}}>{item.name}</p>
                     </Link>
                     </div>))
             }

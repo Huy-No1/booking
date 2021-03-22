@@ -3,8 +3,9 @@ import style from './css/Information.css'
 import {useState} from 'react';
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { connect } from 'react-redux';
 import {Link} from 'react-router-dom';
-const Infomation = (props) => {
+const Information = (props) => {
     const [width, setWidth] = useState('0%');
     const onClick =()=>{
         if(width == '0%')
@@ -19,7 +20,7 @@ const Infomation = (props) => {
                 <label className="seat-seat-note chuadat" style={{width: 300, padding: 10, borderRadius: 15}}>Thông tin người dùng</label>
             </div>
             <div className="information-div">
-                <label>Tên thành viên: Trần Nhật Huy</label>
+                <label>Tên thành viên: {props.user.username}</label>
             </div>
             
             <div className="information-div">
@@ -41,4 +42,14 @@ const Infomation = (props) => {
         </Link>
     </div>)
 }
-export default Infomation
+const stateToProps = (state) => {
+    return {
+        user: state.UserReducer
+    }
+}
+
+const dispatchToprops = (dispatch, props) =>{
+    return {
+    }   
+} 
+export default connect(stateToProps, dispatchToprops)(Information)

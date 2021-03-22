@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import { connect } from "react-redux";
 import * as types from '../reducer/action'
-const Menu = (props)=> {   
+const Menu = (props)=> { 
     return(        
      
         <div className="menu-mainContainer">
@@ -19,9 +19,18 @@ const Menu = (props)=> {
                 </a>
                 <FontAwesomeIcon icon={faTwitter} className="menu-icon"/>
                 <FontAwesomeIcon icon={faYoutubeSquare} className="menu-icon"/>
-                <Link to="/login" className="menu-login">
-                    <label>{!props.user ? `${props.user.username}` :"Đăng Nhập"}</label>
-                </Link>
+                
+                    {
+                        props.user.username == null?
+                            <Link to="/login" className="menu-login">
+                                <label>Đăng nhập</label>
+                            </Link>:
+                            <Link to="/" className="menu-login">
+                                <label>{props.user.username}</label>
+                            </Link>
+                    }
+                    
+                
 
             </div>
             <div className="menu-logo">

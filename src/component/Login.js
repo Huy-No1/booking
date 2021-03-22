@@ -1,10 +1,10 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as types from '../reducer/action'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './css/Login.css';
-import axios from "axios";
+import firebase from '../firebase'
 import { connect } from "react-redux";
 
 //Hiển thị màn hình đăng nhập
@@ -13,9 +13,21 @@ const Login =(props) => {
     const [username, setUserName]= useState("");
     const [password, setPassword]= useState("");
     const [rePassword, setRePassword]= useState("");
-
+    const history = useHistory();
     const loginSubmit = (username, password) =>{
-        
+        if(!(username && password)) {
+            alert("Bạn chưa nhập đầy đủ");
+            return ;
+        }
+        const acc= firebase.database().ref("Account").child(username);
+        acc.on("value", snap =>{
+            const pass=snap.val().pass;
+            if(pass == password){
+                props.login(snap.val());
+                alert("Thanh cong");
+                history.push("/");
+            }
+        })
     }
     return (
         <div className={login?"login-mainContainer":"login-mainContainer l" }>
