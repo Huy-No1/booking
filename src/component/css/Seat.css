@@ -75,19 +75,21 @@
 }
 .seat-chair {
     margin-right: 10px;
+    margin-bottom: 10px;
     width: 40px;
     height: 40px; 
     display: inline-block; 
     text-align: center;
     overflow: hidden;
     cursor: pointer;
-    border-radius: 5px;
+    border-top-left-radius: 20px;
+    border-top-right-radius: 20px;
 }
 .seat-chair.last-child {
     margin-right: 0px;
 }
 .seat-chair1{
-    padding: 80px;
+    padding: 40px;
     display: inline-block;
 }
 
@@ -95,7 +97,7 @@
     display: flex;
     flex-direction: column;
     position: absolute;
-    top: 150px;
+    top: 110px;
     left: 180px;
 }
 .seat-chair1-info.n2 {
@@ -106,7 +108,7 @@
     height: 40px; 
     display: inline-block; 
     background-color: #ffffff7a;
-    margin-bottom: 4px;
+    margin-bottom: 14px;
 }
 
 
