@@ -140,7 +140,7 @@ const Seat = (props) => {
                     <div className="seat-div">
                         <label className="seat-label t">{Intl.NumberFormat('en').format(eticket.length *45000)}</label>
                     </div>
-                    <input type="submit" value="Xác Nhận"></input>
+                    <input type="submit" value="Xác Nhận" style={{fontSize: 15}}/>
                 </div>
             </div>
 

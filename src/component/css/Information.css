@@ -1,18 +1,18 @@
 .information_container {
     width: 80%;
     height: 500px;
-    background-color: #00000038;
     margin-top: 100px;
     display: inline-block;
+    border-bottom: 3px solid #42AF33;
 }
 .information_user {
+    border: 2px solid black;
     display: inline-block;
     width: 40%;
     height: auto;
     padding:20px;
     margin: 20px;
-    color: black;
-    background-color: #7e7e7e30;
+    background-color: #5f9ea091;
     float: left;
     border-radius: 20px;
     font-size: 20px;
@@ -34,19 +34,20 @@ button {
     width: 120px;
     height: 30px;
     color: black;
+    outline: none;
 }
 button:hover {
     background-color: rgb(235, 235, 131);;
     transition: 0.6s;
 }
 .information_history {
-    width: 45%;
     height: 80%;
-    background-color: #7e7e7e30;
+    background-color: #5f9ea091;
     display: inline-block;
     margin: 20px;
     transition: 0.6s;
     float: left;
     overflow: hidden;
-    
+    border-radius: 20px;
+    border: 2px solid black;
 }

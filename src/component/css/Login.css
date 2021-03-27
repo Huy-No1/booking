@@ -1,25 +1,24 @@
 .login-mainContainer {
-    width: 500px;
-    height: 275px;
-    background-color: #ffffff7a;;
+    width: 450px;
+    height: 245px;
+    background-color: #b4b2b8ba;
     margin-top: 150px ;
     border-radius: 20px;
     display: inline-block;
     transition: 0.6s;
 }
 .login-mainContainer.l {
-    height: 350px;
+    height: 300px;
     transition: 0.6s;
 }
 .login-login1 {
-    margin-left: 0px;
     margin-right: 10px;
     color: black;
     text-transform: uppercase;
     font-size: 20px;
     display: inline-block;
-    text-align: left;
     cursor: pointer;
+    font-weight: bold;
 }
 .login-h5.l {
     display: inline-block;
@@ -34,34 +33,39 @@
 }
 .login-loginForm {
     display: block;
-    width: 500px;
-    text-align: center;
-    transition: 0.6s;
+    transition: 0.8s;
 }
 .login-boxInput {
-    text-align: center;
-    background-color: #ffffff7a;;
-    font-size: 20px;
     margin: 10px 0px;
-    padding: 10px;
-    width: 350px;
-    height: 35px;
-    border-radius: 20px;
-    border: none;
-    transition: 0.6s;
+    width: 320px;
+    height: 30px;
+
 }
 .login-submit {
     width: 170px;
     height: 35px;
     background-color: #49A2CC;
-    border-radius: 20px;
-    border: none;
-    font-size: 20px;
-    transition: 1s;
+    border-radius: 50px;
+    cursor: pointer;
+    border-bottom: none;
 }
 
 .login-exit {
     font-size: 30px;
     color: white;
     margin-top: 20px;
+}
+input {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    padding: 2px 15px;
+    font-family: Arial;
+    font-size: 18px;
+    border-bottom: 2px solid rgb(34, 23, 23);
+
+}
+input::placeholder{
+    color: black;
+    font-size: 16px;
 }

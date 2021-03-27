@@ -1,4 +1,4 @@
-import { Component, useState } from "react";
+import { useState } from "react";
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as types from '../reducer/action'
@@ -19,18 +19,16 @@ const Login =(props) => {
     }
     return (
         <div className={login?"login-mainContainer":"login-mainContainer l" }>
-            <div>{props.match.params.user}</div>
-            <a className="login-login1" >
+            <div className="login-login1" >
                 <p onClick={() =>{setLogin(true)}} 
                 className={login?"login-h5 l":"login-h5 s"}>Sign in</p>
-            </a>
+            </div>
             
-            <a className="login-login1">
+            <div className="login-login1">
                 <p onClick={() =>{setLogin(false)}}
                 className={!login?"login-h5 l":"login-h5 s"}>Sign up</p>
-            </a>
-            
-            <div style={{clear:'both'}}></div>
+            </div>
+        
             {
                 login?                
                 <div className="login-loginForm">
@@ -45,7 +43,8 @@ const Login =(props) => {
                             onChange={(e) => setUserName(e.target.value)}/>
                     <input type="password" placeholder="Enter password" className="login-boxInput"
                             onChange={(e) => setPassword(e.target.value)}/>
-                    <input type="password" placeholder="Submit password" className="login-boxInput"
+                            
+                    <input type="password" className="login-boxInput"
                             onChange={(e) => setRePassword(e.target.value)}/>
                     <input type="submit" value="Sign Up" className="login-submit" />
                 </div>

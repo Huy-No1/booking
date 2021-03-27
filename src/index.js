@@ -9,7 +9,6 @@ import {createStore} from 'redux';
 import {Provider} from 'react-redux'
 import Reducer from './reducer/combineReducer';
 //font
-import './fontawesome.js'
 //Router
 import { BrowserRouter as Router } from "react-router-dom";
 const store= createStore(Reducer);

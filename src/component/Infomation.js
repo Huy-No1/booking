@@ -16,7 +16,7 @@ const Infomation = (props) => {
     <div className="information_container">
         <div className="information_user ">
             <div style={{textAlign: 'center', fontSize: '25px', marginBottom:  "20px"}}>
-                <label className="seat-seat-note chuadat" style={{width: 300, padding: 10, borderRadius: 15}}>Thông tin người dùng</label>
+                <label style={{width: 300, padding: 10, borderRadius: 15}}>Thông tin người dùng</label>
             </div>
             <div className="information-div">
                 <label>Tên thành viên: Trần Nhật Huy</label>
@@ -27,8 +27,8 @@ const Infomation = (props) => {
             </div>
             <button onClick={onClick} style={{marginLeft: '38%'}}>Xem lịch sử</button>
         </div>
-        <div className="information_history" style={{width: width, padding: width == '45%'? 20: 0}}>
-            <label className="seat-seat-note chuadat" style={{width: 300, padding: 10, borderRadius: 15, fontSize: 25}}>Lịch sử mua vé</label>
+        <div className="information_history" style={{width: width, padding: width == '45%'? 20: 0, borderWidth: width == '45%'? 2:0}}>
+            <label style={{width: 300, padding: 10, borderRadius: 15, fontSize: 25}}>Lịch sử mua vé</label>
             <div>
 
             </div>
