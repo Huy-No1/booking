@@ -49,6 +49,7 @@
 }
 
 .menu-login:hover {
+    transform: scale(1.1);
     background-color: aliceblue;
     color:#42AF33;
     transition: 0.6s;

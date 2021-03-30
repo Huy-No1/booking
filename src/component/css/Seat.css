@@ -66,12 +66,20 @@
 
 .chuadat {
     background-color: #ffffff7a;
+    transition: 0.4s;
 }
 .dadat {
     background-color: rgb(245, 118, 118);
+    transition: 0.4s;
 }
 .dangchon {
     background-color: rgb(235, 235, 131);
+    animation: bounce 1s linear;
+}
+@keyframes bounce {
+    40% {
+        transform: translateY(-10px);
+    }
 }
 .seat-chair {
     margin-right: 10px;
@@ -84,6 +92,7 @@
     cursor: pointer;
     border-top-left-radius: 20px;
     border-top-right-radius: 20px;
+
 }
 .seat-chair.last-child {
     margin-right: 0px;

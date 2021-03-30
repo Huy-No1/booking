@@ -5,10 +5,10 @@ import MainContainer from './component/MainContainer'
 import Menu from './component/Menu'
 import Login from './component/Login';
 import Seat from './component/Seat';
-import { BrowserRouter as Router, Route, Link, Switch, useLocation } from "react-router-dom";
+import {Route, Link, Switch, useLocation } from "react-router-dom";
 import Information from './component/Infomation';
 import Poster from './component/Poster';
-import { AnimatePresence, motion} from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import ScrollToTop from './ScrollToTop';
 const App = ()=>{
   const [seat, setSeat]= useState(1);

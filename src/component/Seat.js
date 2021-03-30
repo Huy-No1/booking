@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
 import { Link } from "react-router-dom";
 import { useEffect, useState } from "react";
+import { motion } from 'framer-motion';
 import axios from "axios";
 
 //Phần đặt vé
@@ -61,9 +62,10 @@ const Seat = (props) => {
         if(!itemClassName[0][0]) return x;
         for(let i=0; i<6; i++){
             for(let j=0; j<6; j++){
-                x.push(<div className={itemClassName[i][j]} onClick={()=>onClick(i, j)}>
+                x.push(<div 
+                            className={itemClassName[i][j]} onClick={()=>onClick(i, j)}>
                     {itemClassName[i][j].indexOf("dangchon") != -1 ? itemClassName[i][j].slice(-2):""}
-                </div>);
+                    </div>);
                 if(itemClassName[i][j].indexOf("dangchon") != -1) 
                     eticket.push(`${itemClassName[i][j].slice(-2)}`);
             }
@@ -96,7 +98,7 @@ const Seat = (props) => {
             <div className="seat-note">
                 <label className="seat-seat-note chuadat">Ghế trống</label>
                 <label className="seat-seat-note dadat">Ghế đã đặt</label>
-                <label className="seat-seat-note dangchon">Ghế đang chọn</label>
+                <label className="seat-seat-note dangchon" style={{animation: 'none'}}>Ghế đang chọn</label>
             </div>
             <div className="seat-seat">
                 <p className="seat-screen">SCREEN</p>
