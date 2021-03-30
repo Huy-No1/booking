@@ -3,4 +3,4 @@
 
 ## Mô hình Database 
 
-![](./src/background.jpg')
+![]('./src/background.jpg')
