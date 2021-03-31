@@ -12,7 +12,7 @@
     height: auto;
     padding:20px;
     margin: 20px;
-    background-color: #5f9ea091;
+    background-color: rgb(51 48 48 / 22%);
     float: left;
     border-radius: 20px;
     font-size: 20px;
@@ -42,7 +42,7 @@ button:hover {
 }
 .information_history {
     height: 80%;
-    background-color: #5f9ea091;
+    background-color: rgb(51 48 48 / 22%);
     display: inline-block;
     margin: 20px;
     transition: 0.6s;

@@ -5,7 +5,7 @@ const initState=[{}];
 const Reducer = (state= initState, action) => {
     switch(action.type){
         case (types.LOGIN.type):{
-            return action.obj;
+            return {...state,...action.obj};
         }
         default:
             return state;
