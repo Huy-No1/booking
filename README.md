@@ -15,5 +15,6 @@ Các tác vụ:
     Có 4 thực thể quan hệ
 ## Mô hình Database 
 Từ mô hình ER, hình thành nên mô hình Database gồm 6 bảng
+s
 
 
