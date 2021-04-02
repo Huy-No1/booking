@@ -25,6 +25,9 @@ const Infomation = (props) => {
             <div className="information-div">
                 <label>Ngày đăng kí: 30/05/2001</label>
             </div>
+            <div className="information-div">
+                <label>Ngày đăng kí: 30/05/2001</label>
+            </div>
             <button onClick={onClick} style={{marginLeft: '38%'}}>Xem lịch sử</button>
         </div>
         <div className="information_history" style={{width: width, padding: width == '45%'? 20: 0, borderWidth: width == '45%'? 2:0}}>

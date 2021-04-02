@@ -5,12 +5,13 @@
     margin-top: 150px ;
     border-radius: 20px;
     display: inline-block;
-    transition: 0.6s;
+    transition: 0.3s;
 }
 .login-mainContainer.l {
-    height: 300px;
-    transition: 0.6s;
+    height: 410px;
+    transition: 0.3s
 }
+
 .login-login1 {
     margin-right: 10px;
     color: black;
@@ -24,12 +25,12 @@
     display: inline-block;
     margin-top: 30px;
     border-bottom: 5px solid #49A2CC;
-    transition: 0.4s;
+    transition: 0.6s;
 }
 .login-h5.s {
     display: inline-block;
     margin-top: 30px;
-    transition: 0.4s;
+    transition: 0.6s;
 }
 .login-loginForm {
     display: block;
