@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import './css/Seat.css'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimesCircle } from "@fortawesome/free-solid-svg-icons";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { useEffect, useState } from "react";
 import { motion } from 'framer-motion';
 import axios from "axios";
@@ -29,7 +29,11 @@ const Seat = (props) => {
         }
     }
 
-    
+    //history
+    const history = useHistory();
+    const goBack = () =>{
+        history.push('/');
+    }
     //info
     var info= [];
     for(let i=0; i<6; i++){
@@ -76,21 +80,46 @@ const Seat = (props) => {
     }
 
     //Day
-    const today= new Date;
-    const date= today.getDate();
-    const month= today.getMonth() +1;
-    const year= today.getFullYear();
-    const thisDay=`${year}` +'/' + `${month}` +'/' + `${date}`;
-    const thatDay=`${year}` +'/' + `${month}` +'/' + `${date + 1}`;
-    const [day,setDay]= useState("");
-    const time=[];
+    const [ticketDay, setTicketDay] = useState("");
+    const [day, setDay]= useState([]);
+    const [dateTime, setDateTime] =useState([])
     const [set, setSeat]= useState([]);
-    // useEffect(() =>{
-    //     axios.get("http://localhost:3001/api/getmovieTime",{movie_id: seat}).then(res =>{
-    //         time=res.data;
-    //         console.log(time);
-    //     })
-    // });
+    const [time, setTime] =useState(["S"])
+
+    //UseEffect
+    useEffect(() =>{
+        axios.post("http://localhost:5000/bookingticket/get-all-time",{MovieId: list[seat-1].Id}).then(res => {
+            setDateTime(res.data);
+            console.log(res.data);
+        })
+    },[]);
+    useEffect(() =>{
+            for(let item of dateTime){
+                if( !day.includes(item.Time.slice(0, 10)))
+                    setDay([...day, item.Time.slice(0, 10)]);
+            }
+        
+    },[dateTime]);
+    useEffect(() =>{
+        var exp=[];
+        for(let item of dateTime){
+            if(item.Time.includes(ticketDay))
+                exp.push(item.Time.slice(11, 16));
+                
+        }
+    setTime([...exp]);
+    },[dateTime]);  
+    useEffect(() =>{
+        var exp=[];
+        for(let item of dateTime){
+            if(item.Time.includes(ticketDay))
+                exp.push(item.Time.slice(11, 16));
+                
+        }
+    setTime([...exp]);
+    },[dateTime]);  
+
+    
     return(
         
         <div className="seat-container">
@@ -113,27 +142,30 @@ const Seat = (props) => {
             <div className="seat-info">
                 <label className="seat-seat-note chuadat">THÔNG TIN VÉ</label><br/>
                 <div className="seat-infoTicket">
-                    {/* <img src={"/img/" + list[seat - 1].movie_imgSource} alt=""/>  */}
+                    <img src={"/img/" + list[seat - 1].ImageSource} alt=""/> 
                     <div>
-                    {/* <p style={{marginTop: '10px',fontSize: '30px', fontWeight: '700'}}>{list[seat - 1].movie_name}</p>
-                    <p>{list[seat - 1].movie_duration +" phút"}</p>
-                    <p>{"Ra mắt: " + list[seat - 1].movie_release.slice(0, 10)}</p> */}
+                    <p style={{marginTop: '10px',fontSize: '30px', fontWeight: '700'}}>{list[seat - 1].Name}</p>
+                    <p>{list[seat - 1].Duration +" phút"}</p>
+                    <p>{"Ra mắt: " + list[seat - 1].Release.slice(0, 10)}</p>
                     </div>
                     <div style={{clear: 'both'}}></div>
                     <div className="seat-div">
                         <label className="seat-label n"></label>
                         <select name="Ngày" onChange={
-                            e => setDay(e.target.value)
+                            e => setTicketDay(e.target.value)
                         }>
-                            <option value={thisDay}>{thisDay}</option>
-                            <option value={thatDay}>{thatDay}</option>
+                            {
+                                day.map((item, index) => (<option key={index} value={item}>{item}</option>))
+                            }
                         </select>
+
                     </div>
                     <div className="seat-div">
                         <label className="seat-label sc"></label>
                         <select name="Time">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
+                            {
+                                time.map((item, index) => (<option key={index} value={item}>{item}</option>))
+                            }
                         </select>
                     </div>
                     <div className="seat-div">
@@ -146,9 +178,8 @@ const Seat = (props) => {
                 </div>
             </div>
 
-            <Link to="/">
-                <FontAwesomeIcon icon={faTimesCircle} className="login-exit"/>
-            </Link>
+ 
+                <FontAwesomeIcon icon={faTimesCircle} className="login-exit" onClick={goBack}/>
         </div>
     )
     

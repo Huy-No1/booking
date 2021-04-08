@@ -26,7 +26,10 @@ const FilmList = (props) => {
 
     //gọi Api để set cái phim list chạy phía dưới
     useEffect(() =>{
-        setList(props.list);
+        axios.get("http://localhost:5000/bookingticket/get-all-movie").then(res =>{
+            props.onShow(res.data);
+            setList(res.data);
+    });
     },[]);
 
     return(
@@ -34,12 +37,12 @@ const FilmList = (props) => {
             <div className="flex">
             {   
                 list.map((item) => (
-                    <div key={item.movie_id} className={item.movie_id===1?"divname "+ arrayInput[input]:"divname"}
-                        onClick={() =>props.click(item.movie_id)}>
+                    <div key={item.Id} className={item.Id===1?"divname "+ arrayInput[input]:"divname"}
+                        onClick={() =>props.click(item.Id)}>
                     <Link to="/seat" className="name">
-                        <img  src={"img/"+ item.movie_imgSource} 
+                        <img  src={"img/"+ item.ImageSource} 
                             className="poster"/>
-                        <p style={{marginTop: '5px'}}>{item.movie_name}</p>
+                        <p style={{marginTop: '5px'}}>{item.Name}</p>
                     </Link>
                     </div>))
             }

@@ -55,6 +55,7 @@
     font-size: 30px;
     color: white;
     margin-top: 20px;
+    cursor: pointer;
 }
 input {
     background-color: transparent;

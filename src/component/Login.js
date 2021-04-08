@@ -2,7 +2,7 @@ import { useState } from "react";
 import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as types from '../reducer/action'
-import { Link } from 'react-router-dom';
+import { Link, useHistory } from 'react-router-dom';
 import './css/Login.css';
 import axios from "axios";
 import { connect } from "react-redux";
@@ -15,9 +15,16 @@ const Login =(props) => {
     const [username, setUserName]= useState("");
     const [password, setPassword]= useState("");
     const [rePassword, setRePassword]= useState("");
-
+    const history= useHistory();
     const loginSubmit = (username, password) =>{
-        
+        axios.post('http://localhost:5000/users/login', {username: username, password: password}).then(res =>{
+        props.login(res.data);
+        console.log(res.data);
+        if(res.data) {
+            alert("Succes");
+            history.push('/');
+        }
+    });
     }
     return (
         <div className={login?"login-mainContainer":"login-mainContainer l" }>

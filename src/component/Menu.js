@@ -20,7 +20,7 @@ const Menu = (props)=> {
                 <FontAwesomeIcon icon={faTwitter} className="menu-icon"/>
                 <FontAwesomeIcon icon={faYoutubeSquare} className="menu-icon"/>
                 <Link to="/login" className="menu-login">
-                    <label>{!props.user ? `${props.user.username}` :"Đăng Nhập"}</label>
+                    <label>{!props.user ? `${props.user.Username}` :"Đăng Nhập"}</label>
                 </Link>
 
             </div>
