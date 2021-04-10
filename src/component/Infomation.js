@@ -7,6 +7,7 @@ import {Link, useHistory} from 'react-router-dom';
 import { connect } from "react-redux";
 import axios from 'axios';
 import Ticket from './atom/Ticket';
+import { motion } from 'framer-motion';
 const Infomation = (props) => {
     const [width, setWidth] = useState('0%');
     const [data, setData]= useState([]);
@@ -39,7 +40,10 @@ const Infomation = (props) => {
         })
     }
     return (
-        <div>
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}}>
     <div className="information_container">
         <div className="information_user ">
             <div style={{textAlign: 'center', fontSize: '25px', marginBottom:  "20px"}}>
@@ -71,7 +75,7 @@ const Infomation = (props) => {
         <Link to="/">
             <FontAwesomeIcon icon={faTimesCircle} className="login-exit"/>
         </Link>
-    </div>)
+        </motion.div>)
 }
 
 const stateToProps = (state) => {

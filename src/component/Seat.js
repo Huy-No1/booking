@@ -164,6 +164,7 @@ const Seat = (props) => {
     const Buy =() =>{
         if(props.user.user === undefined){
             alert("You aren't login");
+            history.push('/login');
             return;
         }
         if(eticket.length > 3 ){
@@ -185,7 +186,10 @@ const Seat = (props) => {
         })
     }
     return(
-        <div className="seat-container">
+        <motion.div
+        initial={{opacity: 0}}
+        animate={{opacity: 1}}
+        exit={{opacity: 0}} className="seat-container">
             <div className="seat-note">
                 <label className="seat-seat-note chuadat">Ghế trống</label>
                 <label className="seat-seat-note dadat">Ghế đã đặt</label>
@@ -243,7 +247,7 @@ const Seat = (props) => {
 
  
                 <FontAwesomeIcon icon={faTimesCircle} className="login-exit" onClick={goBack}/>
-        </div>
+        </motion.div>
     )
     
 }

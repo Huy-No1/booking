@@ -7,6 +7,7 @@ import SignInForm from './atom/SignInForm';
 import SignUpForm from './atom/SignUpForm';
 import './css/Login.css';
 import axios from "axios";
+import { motion } from 'framer-motion';
 import { connect } from "react-redux";
 
 //Hiển thị màn hình đăng nhập
@@ -22,7 +23,7 @@ const Login =(props) => {
         axios.post('https://h2m-server.herokuapp.com/users/login', {Username: username, Password: password}).then(res =>{
         props.login(res.data);
         if(res.data) {
-            alert("Succes");
+            alert("Success");
             history.push('/');
         }
     }).catch(err => alert("Invalid"));
@@ -42,7 +43,11 @@ const Login =(props) => {
         }).catch( err => alert("Already has this account"));
     }
     return (
-        <div className={login?"login-mainContainer":"login-mainContainer l" }>
+        <motion.div
+            initial={{opacity: 0}}
+            animate={{opacity: 1}}
+            exit={{opacity: 0}}
+            className={login?"login-mainContainer":"login-mainContainer l" }>
             <div className="login-login1" >
                 <p onClick={() =>{setLogin(true)}} 
                 className={login?"login-h5 l":"login-h5 s"}>Sign in</p>
@@ -61,7 +66,7 @@ const Login =(props) => {
             <Link to="/">
                 <FontAwesomeIcon icon={faTimesCircle} className="login-exit"/>
             </Link>
-        </div>
+        </motion.div>
     )
     
 }
