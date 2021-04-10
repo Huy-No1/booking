@@ -19,9 +19,16 @@ const Menu = (props)=> {
                 </a>
                 <FontAwesomeIcon icon={faTwitter} className="menu-icon"/>
                 <FontAwesomeIcon icon={faYoutubeSquare} className="menu-icon"/>
-                <Link to="/login" className="menu-login">
-                    <label>{!props.user ? `${props.user.Username}` :"Đăng Nhập"}</label>
-                </Link>
+        
+                {
+                        props.user.user == null?
+                            <Link to="/login" className="menu-login">
+                                <label>Đăng nhập</label>
+                            </Link>:
+                            <Link to="/Information" className="menu-login">
+                                <label>{props.user.user.Username}</label>
+                            </Link>
+                    }
 
             </div>
             <div className="menu-logo">
@@ -39,9 +46,9 @@ const stateToProps = (state) => {
 
 const dispatchToprops = (dispatch, props) =>{
     return {
-        onShow: (obj) =>{
-            dispatch({type: types.LIST.type, obj});
-        }
+        // onShow: (obj) =>{
+        //     dispatch({type: types.LIST.type, obj});
+        // }
     }   
 } 
 export default connect(stateToProps,null)(Menu)

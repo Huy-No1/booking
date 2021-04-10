@@ -10,6 +10,7 @@ import axios from "axios";
 //Phần đặt vé
 const Seat = (props) => {
     const {list, seat}= props;
+    const [seats, setSeats]= useState([]);
     // Chinh sua className cua tunng box //chua dat co mau trang // dang chon co mau vang
     const onClick = (i, j) => {
         if(itemClassName[i][j].indexOf("chuadat") !== -1){
@@ -37,7 +38,7 @@ const Seat = (props) => {
     //info
     var info= [];
     for(let i=0; i<6; i++){
-        info.push(<div className="seat-abc">{String.fromCharCode(65 + i)}</div>);
+        info.push(<div className="seat-abc" key={i}>{String.fromCharCode(65 + i)}</div>);
     }
     //item
     const [itemClassName, setItemClassName]= useState([[],[],[],[],[],[]]);
@@ -45,12 +46,33 @@ const Seat = (props) => {
         let exp=[[],[],[],[],[],[]];
         for(let i=0; i<6; i++){
             for(let j=0; j<6; j++){
-                if( j===5){
-                    exp[i][j]="seat-chair last-child chuadat " + String.fromCharCode(65 + i)+(j+1);
+                if(seats.length == 0){
+                    if( j===5){
+                        exp[i][j]="seat-chair last-child chuadat " + String.fromCharCode(65 + i)+(j+1);
+                    }
+                    else {
+                        exp[i][j]="seat-chair chuadat " + String.fromCharCode(65 + i)+(j+1);
+    
+                    }
                 }
                 else {
-                    exp[i][j]="seat-chair chuadat " + String.fromCharCode(65 + i)+(j+1);
+                    if( seats[i + j*6 ].Available == 0)  {
+                        if( j===5){
+                            exp[i][j]="seat-chair last-child dadat " + String.fromCharCode(65 + i)+(j+1);
+                        }
+                        else {
+                            exp[i][j]="seat-chair dadat " + String.fromCharCode(65 + i)+(j+1);
+        
+                        }
+                    }
+                    else 
+                    if( j===5){
+                        exp[i][j]="seat-chair last-child chuadat " + String.fromCharCode(65 + i)+(j+1);
+                    }
+                    else {
+                        exp[i][j]="seat-chair chuadat " + String.fromCharCode(65 + i)+(j+1);
 
+                    }
                 }
             }
         }
@@ -58,7 +80,7 @@ const Seat = (props) => {
             return exp;
         });
     }
-    ,[]);
+    ,[seats]);
 
     const eticket=[];
     const item =() =>{
@@ -66,7 +88,7 @@ const Seat = (props) => {
         if(!itemClassName[0][0]) return x;
         for(let i=0; i<6; i++){
             for(let j=0; j<6; j++){
-                x.push(<div 
+                x.push(<div key={i +j*6}
                             className={itemClassName[i][j]} onClick={()=>onClick(i, j)}>
                     {itemClassName[i][j].indexOf("dangchon") != -1 ? itemClassName[i][j].slice(-2):""}
                     </div>);
@@ -81,16 +103,15 @@ const Seat = (props) => {
 
     //Day
     const [ticketDay, setTicketDay] = useState("");
+    const [ticketTime, setTicketTime] = useState("");
     const [day, setDay]= useState([]);
     const [dateTime, setDateTime] =useState([])
-    const [set, setSeat]= useState([]);
-    const [time, setTime] =useState(["S"])
+    const [time, setTime] =useState([""])
 
     //UseEffect
     useEffect(() =>{
-        axios.post("http://localhost:5000/bookingticket/get-all-time",{MovieId: list[seat-1].Id}).then(res => {
+        axios.post("https://h2m-server.herokuapp.com/bookingticket/get-all-time",{MovieId: list[seat-1].Id}).then(res => {
             setDateTime(res.data);
-            console.log(res.data);
         })
     },[]);
     useEffect(() =>{
@@ -110,29 +131,70 @@ const Seat = (props) => {
     setTime([...exp]);
     },[dateTime]);  
     useEffect(() =>{
-        var exp=[];
-        for(let item of dateTime){
-            if(item.Time.includes(ticketDay))
-                exp.push(item.Time.slice(11, 16));
-                
+        axios.post("https://h2m-server.herokuapp.com/bookingticket/get-movie",
+        {
+            ScheduleId: getscheduleId()
         }
-    setTime([...exp]);
+        ).then(res => {
+            setSeats(res.data);
+        })
     },[dateTime]);  
-
-    
+    useEffect(() =>{
+        axios.post("https://h2m-server.herokuapp.com/bookingticket/get-movie",
+        {
+            ScheduleId: getscheduleId()
+        }
+        ).then(res => {
+            setSeats(res.data);
+        })
+    },[ticketTime]);  
+    const getCurrentDate =() =>{
+        const today= new Date();
+        return `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()} ${today.getHours()}:${today.getMinutes()}`;
+    }
+    const getId =(seat) =>{
+        let id= getscheduleId();
+        return parseInt(seat.charCodeAt(0)-65) + parseInt(seat[1]-1)*6 + 1 + (id-1) *36;
+    }
+    const getscheduleId = ()=> {
+        for(let i of dateTime)
+            if(i.Time.includes(ticketDay) && i.Time.includes(ticketTime))
+            return i.Id;
+    } 
+    const Buy =() =>{
+        if(props.user.user === undefined){
+            alert("You aren't login");
+            return;
+        }
+        if(eticket.length > 3 ){
+            alert("You only can buy max 3 tickets");
+            return;
+        }
+        let listSeat=[];
+        for(let i=0; i< eticket.length; i++)
+            listSeat.push(getId(eticket[i]));
+        axios.post("https://h2m-server.herokuapp.com/bookingticket/booking-ticket",
+        {
+            TicketId: listSeat,
+            CustomerId: props.user.user.Id,
+            BookingDate: getCurrentDate()
+        }
+        ).then(res => {
+            alert("booking success");
+            history.push('/');
+        })
+    }
     return(
-        
         <div className="seat-container">
-
             <div className="seat-note">
                 <label className="seat-seat-note chuadat">Ghế trống</label>
                 <label className="seat-seat-note dadat">Ghế đã đặt</label>
                 <label className="seat-seat-note dangchon" style={{animation: 'none'}}>Ghế đang chọn</label>
             </div>
             <div className="seat-seat">
-                <p className="seat-screen">SCREEN</p>
-                <div className="seat-chair1">
-                    {
+            <p className="seat-screen">SCREEN</p>
+            <div className="seat-chair1">
+                {
                         item()
                     }
                 </div>
@@ -162,7 +224,8 @@ const Seat = (props) => {
                     </div>
                     <div className="seat-div">
                         <label className="seat-label sc"></label>
-                        <select name="Time">
+                        <select name="Time"
+                        onChange={e =>setTicketTime(e.target.value)}>
                             {
                                 time.map((item, index) => (<option key={index} value={item}>{item}</option>))
                             }
@@ -174,7 +237,7 @@ const Seat = (props) => {
                     <div className="seat-div">
                         <label className="seat-label t">{Intl.NumberFormat('en').format(eticket.length *45000)}</label>
                     </div>
-                    <input type="submit" value="Xác Nhận" style={{fontSize: 15}}/>
+                    <input type="submit" value="Xác Nhận" style={{fontSize: 15}} onClick={Buy}/>
                 </div>
             </div>
 
@@ -187,7 +250,8 @@ const Seat = (props) => {
 
 const stateToProps = (state) => {
     return {
-        list: state.FilmReducer
+        list: state.FilmReducer,
+        user: state.UserReducer,
     }
 }
 export default connect(stateToProps, null)(Seat)

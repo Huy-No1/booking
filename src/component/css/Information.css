@@ -51,3 +51,32 @@ button:hover {
     border-radius: 20px;
     border: 2px solid black;
 }
+.info-ticket {
+    align-self: center;
+    width: 80%;
+    /* height:300px; */
+    padding: 10px;
+    border-radius: 30px;
+    border: 2px solid black;
+    margin: 20px auto;
+    background-color: #f6f6f69c;
+    font-family: Arial;
+    font-size: large;
+    position: relative;
+}
+.info-scroll {
+    margin-top: 10px;
+    height: 360px;
+    width: 100%;
+    background-color: #a5c8c7;
+    overflow :scroll;
+    border-radius: 30px;
+}
+.info-delete {
+    font-size: 20px;
+    position: absolute;
+    top: 5px;
+    right: 12px;
+    color: #22485a;
+    cursor: pointer;
+}

@@ -29,9 +29,6 @@ const App = ()=>{
           <Route exact path="/information" component={Information}/>
       </Switch>
       </AnimatePresence>
-      <Link to="/information">
-        ss
-      </Link>
     </div>        
     
   );

@@ -3,6 +3,8 @@ import { faTimesCircle } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import * as types from '../reducer/action'
 import { Link, useHistory } from 'react-router-dom';
+import SignInForm from './atom/SignInForm';
+import SignUpForm from './atom/SignUpForm';
 import './css/Login.css';
 import axios from "axios";
 import { connect } from "react-redux";
@@ -16,15 +18,28 @@ const Login =(props) => {
     const [password, setPassword]= useState("");
     const [rePassword, setRePassword]= useState("");
     const history= useHistory();
-    const loginSubmit = (username, password) =>{
-        axios.post('http://localhost:5000/users/login', {username: username, password: password}).then(res =>{
+    const signInSubmit = (username, password) =>{
+        axios.post('https://h2m-server.herokuapp.com/users/login', {Username: username, Password: password}).then(res =>{
         props.login(res.data);
-        console.log(res.data);
         if(res.data) {
             alert("Succes");
             history.push('/');
         }
-    });
+    }).catch(err => alert("Invalid"));
+    }
+    const signUpSubmit =(username, email, phone, password, rePassword) => {
+        if( password != rePassword) {
+            alert("Password incorrect");
+            return;
+        }
+        axios.post('https://h2m-server.herokuapp.com/users/signup', {
+            Username: username,
+            Email: email,
+            Phone: phone,
+            Password: password
+        }).then( res => {
+            alert("Success, please signIn");
+        }).catch( err => alert("Already has this account"));
     }
     return (
         <div className={login?"login-mainContainer":"login-mainContainer l" }>
@@ -40,27 +55,8 @@ const Login =(props) => {
         
             {
                 login?                
-                <div className="login-loginForm">
-                    <input type="text" placeholder="Username" className="login-boxInput"
-                            onChange={(e) => setUserName(e.target.value)}/>
-                    <input type="password" placeholder="Password" className="login-boxInput"
-                            onChange={(e) => setPassword(e.target.value)}/>
-                    <input type="submit" value="Login" className="login-submit" onClick={() => loginSubmit(username, password)}/>
-                </div>:
-                <div className="login-loginForm">
-                    <input type="text" placeholder="Username" className="login-boxInput"
-                            onChange={(e) => setUserName(e.target.value)} />
-                    <input type="text" placeholder="Email" className="login-boxInput"
-                            onChange={(e) => setEmail(e.target.value)}/>
-                    <input style={{display: 'none'}}/>
-                    <input type="text" placeholder="Phone" className="login-boxInput"
-                          />
-                    <input type="password" placeholder="Password" className="login-boxInput"
-                            onChange={(e) => setPassword(e.target.value)}/>         
-                    <input type="password" className="login-boxInput"
-                            onChange={(e) => setRePassword(e.target.value)} placeholder="Confirm password"/> 
-                    <input type="submit" value="Sign Up" className="login-submit" />
-                </div>
+                <SignInForm signInSubmit={signInSubmit}/>:
+                <SignUpForm signUpSubmit={signUpSubmit}/>
             }
             <Link to="/">
                 <FontAwesomeIcon icon={faTimesCircle} className="login-exit"/>

@@ -26,7 +26,7 @@ const FilmList = (props) => {
 
     //gọi Api để set cái phim list chạy phía dưới
     useEffect(() =>{
-        axios.get("http://localhost:5000/bookingticket/get-all-movie").then(res =>{
+        axios.get("https://h2m-server.herokuapp.com/bookingticket/get-all-movie").then(res =>{
             props.onShow(res.data);
             setList(res.data);
     });
